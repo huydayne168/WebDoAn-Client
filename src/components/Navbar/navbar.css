@@ -1,0 +1,443 @@
+html {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    background: #fffdfb;
+    color: #171717;
+    font-family: "Open Sans", Arial, sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 0 22px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.site-header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 50;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.96);
+    border-bottom: 1px solid #eeeeee;
+    box-shadow: 0 6px 24px rgba(17, 24, 39, 0.06);
+    backdrop-filter: blur(10px);
+}
+
+.topbar {
+    min-height: 32px;
+    padding: 6px 16px;
+    background: #171717;
+    color: #fff;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.topbar a {
+    margin-left: 4px;
+    color: #ffcfbd;
+    font-weight: 800;
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 62px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    gap: 24px;
+}
+
+.header__logo img {
+    display: block;
+    height: 42px;
+    object-fit: contain;
+}
+
+.header__navbar-list {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.header__navbar-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 42px;
+    padding: 0 15px;
+    border-radius: 10px;
+    color: #222;
+    font-size: 14px;
+    font-weight: 750;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.header__navbar-link:hover {
+    background: #fff3ed;
+    color: #d64b1f;
+}
+
+.navbar-item--about-coolmate {
+    position: relative;
+}
+
+.navbar-item--about-coolmate__menu-wrap {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 94px;
+    z-index: 45;
+    padding: 20px;
+    background: #fff;
+    border-top: 1px solid #eeeeee;
+    border-bottom: 1px solid #eeeeee;
+    box-shadow: 0 14px 34px rgba(17, 24, 39, 0.08);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s ease;
+}
+
+.navbar-item--about-coolmate:hover .navbar-item--about-coolmate__menu-wrap {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.about-coolmate__menu-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.about-coolmate__menu-inner > a {
+    margin-bottom: 16px;
+    color: #d64b1f !important;
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.about-motorbike__menu-inner-item {
+    min-height: 110px;
+    padding: 16px;
+    border: 1px solid #eeeeee;
+    border-radius: 12px;
+    background: #fffdfb;
+}
+
+.about-motorbike__menu-item-name {
+    margin: 0 0 8px;
+    color: #171717;
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.about-motorbike__menu-item-content {
+    margin: 0;
+    color: #666;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.header__actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header__actions-link,
+.header__actions-search button {
+    display: grid;
+    width: 38px;
+    height: 38px;
+    place-items: center;
+    border: 0;
+    border-radius: 999px;
+    background: #f6f6f6;
+    color: #171717;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.header__actions-link:hover,
+.header__actions-search button:hover {
+    background: #f05a28;
+    color: #fff;
+}
+
+.header__actions-account,
+.header__actions-cart-icon {
+    position: relative;
+}
+
+.header__actions-cart-notify {
+    position: absolute;
+    top: -5px;
+    right: -4px;
+    z-index: 1;
+    display: grid;
+    min-width: 18px;
+    height: 18px;
+    place-items: center;
+    padding: 0 5px;
+    border-radius: 999px;
+    background: #f05a28;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.dropdown-menu,
+.mini-cart-wrap {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 80;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-6px);
+    transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s ease;
+}
+
+.header__actions-account:hover .dropdown-menu,
+.header__actions-account:focus-within .dropdown-menu,
+.header__actions-cart-icon:hover .mini-cart-wrap,
+.header__actions-cart-icon:focus-within .mini-cart-wrap {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.dropdown-menu {
+    min-width: 180px;
+    margin-top: 8px;
+    padding: 8px;
+    border: 1px solid #eeeeee;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 12px 28px rgba(17, 24, 39, 0.12);
+}
+
+.dropdown-menu::before,
+.mini-cart-wrap::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 100%;
+    height: 10px;
+}
+
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    color: #222;
+    font-size: 14px;
+    text-align: left;
+}
+
+.dropdown-item:hover {
+    background: #fff3ed;
+    color: #d64b1f;
+}
+
+.mini-cart {
+    width: 360px;
+    max-width: calc(100vw - 24px);
+    margin-top: 8px;
+    padding: 16px;
+    border: 1px solid #eeeeee;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 12px 28px rgba(17, 24, 39, 0.12);
+}
+
+.mini-cart-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+.mini-cart-head a {
+    color: #d64b1f;
+    font-weight: 800;
+}
+
+.mini-cart__list {
+    max-height: 62vh;
+    padding: 0;
+    margin: 0;
+    overflow: auto;
+    list-style: none;
+}
+
+.cart-empty {
+    margin: 0;
+    padding: 18px 0 4px;
+    color: #747474;
+    font-size: 14px;
+    text-align: center;
+}
+
+.mini-cart__item {
+    margin-bottom: 14px;
+}
+
+.mini-cart__item:last-child {
+    margin-bottom: 0;
+}
+
+.mini-cart__link,
+.notify-added__item {
+    display: flex;
+    gap: 12px;
+    color: #171717;
+}
+
+.mini-cart__link-img,
+.notify-added-img img {
+    width: 82px;
+    height: 90px;
+    flex: 0 0 82px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.mini-cart__link-img img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.mini-cart__link-content,
+.notify-product__content {
+    flex: 1;
+    position: relative;
+}
+
+.mini-cart__link-content-name,
+.notify-product__title {
+    display: -webkit-box;
+    overflow: hidden;
+    color: #171717;
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 1.45;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.mini-cart__link-content-price {
+    margin: 6px 0 2px;
+    color: #d64b1f;
+    font-size: 14px;
+    font-weight: 850;
+}
+
+.mini-cart__link-content-quantity {
+    margin: 0;
+    color: #747474;
+    font-size: 12px;
+}
+
+.mini-cart__item-cancel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: grid;
+    width: 24px;
+    height: 24px;
+    place-items: center;
+    border-radius: 999px;
+    color: #777;
+    cursor: pointer;
+}
+
+.mini-cart__item-cancel:hover {
+    background: #f4f4f4;
+    color: #d64b1f;
+}
+
+.search {
+    border-top: 1px solid #eeeeee;
+    background: #fff;
+}
+
+.search__inner {
+    display: flex;
+    align-items: center;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 20px;
+}
+
+.search__input {
+    flex: 1;
+    min-height: 42px;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    padding: 0 14px;
+}
+
+@media (max-width: 900px) {
+    .header-inner {
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 10px 14px;
+    }
+
+    .header__navbar {
+        order: 3;
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .header__navbar-list {
+        min-width: max-content;
+    }
+
+    .navbar-item--about-coolmate__menu-wrap {
+        top: 126px;
+    }
+}

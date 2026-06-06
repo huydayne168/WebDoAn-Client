@@ -1,0 +1,312 @@
+.product-page {
+    min-height: 100vh;
+    padding-top: 96px;
+    background: #fffdfb;
+}
+
+.product-page .filter {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    max-width: 1180px;
+    margin: 0 auto 26px;
+    padding: 22px 20px;
+    border: 1px solid #eeeeee;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 10px 28px rgba(17, 24, 39, 0.05);
+}
+
+.product-page .filter h2 {
+    margin: 0 8px 0 0;
+    color: #171717;
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.product-page .filter-search,
+.product-page .filter-item {
+    position: relative;
+}
+
+.product-page .filter-search {
+    display: flex;
+    align-items: center;
+    min-width: min(320px, 100%);
+    height: 42px;
+    padding: 0 14px;
+    border: 1px solid #dedede;
+    border-radius: 10px;
+    background: #fbfbfb;
+}
+
+.product-page .filter-search input {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    outline: none;
+    background: transparent;
+}
+
+.product-page .filter-item__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-width: 210px;
+    height: 42px;
+    padding: 0 14px;
+    border: 1px solid #dedede;
+    border-radius: 10px;
+    background: #fff;
+    cursor: pointer;
+}
+
+.product-page .filter-item__option {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    z-index: 20;
+    display: none;
+    width: 100%;
+    min-width: 220px;
+    padding: 8px;
+    margin: 0;
+    border: 1px solid #eeeeee;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 12px 28px rgba(17, 24, 39, 0.12);
+    list-style: none;
+}
+
+.product-page .filter-item:hover .filter-item__option,
+.product-page .filter-item.active .filter-item__option {
+    display: block;
+}
+
+.product-page .filter-item__option li {
+    padding: 9px 10px;
+    border-radius: 8px;
+    color: #333;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.product-page .filter-item__option li:hover {
+    background: #fff3ed;
+    color: #d64b1f;
+}
+
+.product-page .container1 {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.product-page .product-type .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.product-page .col.p-2-4 {
+    flex: 1 1 calc(20% - 8px);
+    min-width: 190px;
+    padding: 0;
+}
+
+.product-page .product {
+    position: relative;
+    height: 100%;
+    padding: 12px;
+    border: 1px solid #eeeeee;
+    border-radius: 14px;
+    background: #fff;
+    transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.product-page .product:hover {
+    transform: translateY(-3px);
+    border-color: #f05a28;
+    box-shadow: 0 12px 28px rgba(17, 24, 39, 0.08);
+}
+
+.product-page .product-img-wrap {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #f8f8f8;
+}
+
+.product-page .product-img {
+    position: relative;
+    display: block;
+    aspect-ratio: 1 / 1;
+}
+
+.product-page .product-img-1,
+.product-page .product-img-2 {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+    transition: opacity 0.18s ease;
+}
+
+.product-page .product-img-2,
+.product-page .product-img:hover .product-img-1 {
+    opacity: 0;
+}
+
+.product-page .product-img:hover .product-img-2 {
+    opacity: 1;
+}
+
+.product-page .product-size {
+    position: absolute;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 6px 8px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 6px 18px rgba(17, 24, 39, 0.08);
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.product-page .product-img-wrap:hover .product-size {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.product-page .product-size p {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.product-page .btn--size {
+    min-height: 30px;
+    padding: 0 10px;
+    border-radius: 8px;
+    background: #171717;
+    color: #fff;
+    font-size: 12px;
+}
+
+.product-page .product-name {
+    min-height: 42px;
+    margin: 10px 0 6px;
+    color: #111;
+    font-size: 15px;
+    font-weight: 800;
+    line-height: 1.4;
+}
+
+.product-page .product-price-wrap {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.product-page .product-price {
+    color: #d64b1f;
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.product-page .product-original-price {
+    color: #9a9a9a;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: line-through;
+}
+
+.product-page .product-discount {
+    display: inline-block;
+    min-height: 28px;
+    margin-top: 10px;
+    padding: 5px 9px;
+    border-radius: 999px;
+    background: #fff3ed;
+    color: #d64b1f;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.product-page .sale-tag {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 4px 8px;
+    border-radius: 999px;
+    background: #171717;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.product-page .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 26px 20px 18px;
+    margin: 0;
+    list-style: none;
+}
+
+.product-page .pagination .page-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 38px;
+    padding: 0 13px;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    color: #171717;
+    cursor: pointer;
+}
+
+.product-page .pagination .page-num:hover,
+.product-page .pagination .active {
+    border-color: #f05a28;
+    background: #f05a28;
+    color: #fff;
+}
+
+@media (max-width: 900px) {
+    .product-page .col.p-2-4 {
+        flex: 1 1 calc(50% - 18px);
+    }
+}
+
+@media (max-width: 560px) {
+    .product-page {
+        padding-top: 112px;
+    }
+
+    .product-page .filter {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .product-page .filter-search,
+    .product-page .filter-item__inner {
+        width: 100%;
+    }
+
+    .product-page .col.p-2-4 {
+        flex: 1 1 100%;
+    }
+}

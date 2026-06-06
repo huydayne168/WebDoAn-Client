@@ -1,0 +1,13 @@
+@import "./Login.css";
+
+.register-page .form-login1 {
+    width: min(100%, 560px);
+}
+
+.register-page .form-option {
+    justify-content: center;
+}
+
+.register-page .form-option__login1 {
+    padding-left: 0;
+}
