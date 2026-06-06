@@ -1,5 +1,5 @@
 import React from 'react'
-import { Routes,Route, Router } from 'react-router-dom';
+import { Routes,Route } from 'react-router-dom';
 import './config/axios';
 import Navbar from './components/Navbar/navbar'
 import Footer from './components/Footer/footer'

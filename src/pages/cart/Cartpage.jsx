@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Fragment, useEffect, useState } from 'react'
 import ActiveCart, { LoadData, SetActiveVoucher } from '../../until/cartactive';
 import axios from "axios";

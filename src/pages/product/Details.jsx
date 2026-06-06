@@ -3,8 +3,6 @@ import Payment from '../../until/detail';
 import AddProduct from '../../until/cart';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { useUser } from '../../until/userContext';
 import "./Details.css";
 
@@ -14,9 +12,6 @@ export default function Details() {
     const { user } = useUser();
 
     const [sanpham ,setData] = useState({});
-    const [allsanPhamSoSanh, setallSanPhamSoSanh] = useState(null);
-    const [sanPhamSoSanh, setSanPhamSoSanh] = useState(null);
-    const [modalOpen, setModalOpen] = useState(false);
     const [selectedImage, setSelectedImage] = useState("");
     const [quantity, setQuantity] = useState(1);
     const [quantityError, setQuantityError] = useState("");
@@ -32,9 +27,6 @@ export default function Details() {
     const [reviewMessage, setReviewMessage] = useState("");
     const [reviewSubmitting, setReviewSubmitting] = useState(false);
     
-    console.log(sanPhamSoSanh)
-
-
     const{ma_san_pham} = useParams();
 
     useEffect(()=>{
@@ -128,16 +120,6 @@ export default function Details() {
     const decreaseQuantity = () => {
         handleQuantityChange(quantity - 1);
     };
-
-    const loadData = async() =>{
-        const response = await axios.get("/api/getallsp");
-        setallSanPhamSoSanh(response.data);
-    };
-
-    useEffect(()=>{
-        loadData();
-    },[]);
-
 
     const formatCurrency = (number) => {
         return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(number);

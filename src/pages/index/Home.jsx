@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Fragment, useEffect, useState } from "react";
 import Silde from "../../components/slider/silde";
 import { Link, useNavigate } from "react-router-dom";

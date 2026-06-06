@@ -158,7 +158,6 @@ function ActiveCart() {
   useEffect(() => {
 
     var payments = document.querySelectorAll('.payments-item')
-    var paymentsInput = document.querySelector('.payments-item input')
     document.querySelector('.payments-item.active .check').checked = true; 
 
     payments.forEach((payment, index) => {
