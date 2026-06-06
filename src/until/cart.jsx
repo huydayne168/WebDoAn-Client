@@ -17,7 +17,7 @@ function AddProduct() {
           alert(`Chỉ còn ${item.stock} sản phẩm trong kho.`);
           return false;
       }
-      if (localStorage.getItem("cart") == null) {
+      if (localStorage.getItem("cart") === null) {
           list = [item];
       } else {
           list = JSON.parse(localStorage.getItem("cart")) || [];
@@ -46,7 +46,7 @@ function AddProduct() {
 
 
     $('.btn-addCart').click(function() {
-      if ($(this).text() == "Thêm vào giỏ hàng") {
+      if ($(this).text() === "Thêm vào giỏ hàng") {
           var name = $(".content__heading").text();
           var img = $(".product-img__option-item.active img").attr("src");
           var price = convertToNumber($(".content__price").text());
@@ -182,7 +182,7 @@ function AddProduct() {
 
     //Hàm chuyển từ số sang chuỗi theo định dạng VND
     function convertVND(number) {
-      if (number == 0) {
+      if (number === 0) {
         return "0đ";
       }
       var str = JSON.stringify(number);
@@ -190,7 +190,7 @@ function AddProduct() {
       var length = str.length;
       var count = 0;
       for (var i = length - 1; i >= 0; --i) {
-        if (count % 3 == 0 && count != 0) {
+        if (count % 3 === 0 && count !== 0) {
           result = str[i] + "." + result;
         } else {
           result = str[i] + result;

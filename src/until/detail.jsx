@@ -42,7 +42,7 @@ function Payment() {
           for(var j=0;j<btnSize.length;j++){
               btnSize[j].classList.remove("is-disabled")
               for(var i=0;i<disabled.length;i++){                       
-                  if(btnSize[j].classList[1] == disabled[i]){
+                  if(btnSize[j].classList[1] === disabled[i]){
                       btnSize[j].classList.add("is-disabled")
                   }
               }
@@ -52,7 +52,7 @@ function Payment() {
       var oldOption = 0;
       $(".content__color-item").each(function(index,value){
           $(value).click(function(){
-              if(index != oldOption){
+              if(index !== oldOption){
                   $(".content__color-item.active").removeClass("active")
                   //thêm border vào 
                   $(this).addClass("active")
