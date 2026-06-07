@@ -57,6 +57,20 @@
     box-shadow: 0 0 0 3px rgba(240, 90, 40, 0.12);
 }
 
+.auth-page .auth-error,
+.auth-page .auth-field-error {
+    margin: -4px 0 12px;
+    color: #d93025;
+    font-size: 13px;
+    line-height: 1.4;
+    text-align: left;
+}
+
+.auth-page .auth-error {
+    margin-top: 0;
+    text-align: center;
+}
+
 .auth-page .btn--login,
 .auth-page .btn--login1,
 .auth-page .btn--fb,

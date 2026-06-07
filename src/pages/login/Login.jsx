@@ -10,19 +10,43 @@ const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const navigate = useNavigate();
 
-  const handleLogin = async () => {
+  const validateLogin = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!username.trim()) {
+      setMessage('Vui lòng nhập email.');
+      return false;
+    }
+
     if (!emailRegex.test(username.trim())) {
       setMessage('Vui lòng nhập email hợp lệ');
+      return false;
+    }
+
+    if (!password.trim()) {
+      setMessage('Vui lòng nhập mật khẩu.');
+      return false;
+    }
+
+    return true;
+  };
+
+  const handleLogin = async (event) => {
+    event.preventDefault();
+    setMessage('');
+
+    if (!validateLogin()) {
       return;
     }
 
+    setIsSubmitting(true);
     try {
       const response = await axios.post('/api/login', {
-        email: username,
+        email: username.trim(),
         mat_khau: password,
       });
 
@@ -40,12 +64,14 @@ const Login = () => {
     } catch (error) {
       console.error(error);
       setMessage('Có lỗi xảy ra trong quá trình đăng nhập.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
     <div className="modal-form auth-page">
-      <div className="form-login">
+      <form className="form-login" onSubmit={handleLogin} noValidate>
         <h2 className="login__heading">Đăng nhập</h2>
         {/* <p className="login__text">
           Nếu đã từng mua hàng trên Website trước đây, bạn có thể dùng tính năng{' '}
@@ -53,12 +79,16 @@ const Login = () => {
         </p> */}
 
         <input
-          type="text"
+          type="email"
           id="username"
           placeholder="Email/SĐT của bạn"
           className="login__input"
           value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          onChange={(e) => {
+            setUsername(e.target.value);
+            setMessage('');
+          }}
+          autoComplete="email"
         />
 
         <input
@@ -67,14 +97,18 @@ const Login = () => {
           placeholder="Mật khẩu"
           className="login__input"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e) => {
+            setPassword(e.target.value);
+            setMessage('');
+          }}
+          autoComplete="current-password"
         />
 
-        {message && <p style={{ marginBottom: '15px', color: 'red' }} className="login__message">{message}</p>}
+        {message && <p className="auth-error login__message">{message}</p>}
 
-        <div className="btn btn--login" onClick={handleLogin}>
-          Đăng nhập
-        </div>
+        <button type="submit" className="btn btn--login" disabled={isSubmitting}>
+          {isSubmitting ? "Đang đăng nhập..." : "Đăng nhập"}
+        </button>
 
         <div className="login-separate">
           <span></span>
@@ -96,7 +130,7 @@ const Login = () => {
           </Link>
           <span>Quên mật khẩu</span>
         </div>
-      </div>
+      </form>
     </div>
   );
 };
