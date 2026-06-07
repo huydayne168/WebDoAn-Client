@@ -17,9 +17,17 @@ export default function VnpayReturn() {
       params[key] = value;
     }
 
+    if (!params.vnp_SecureHash) {
+      toast.error("Thiếu dữ liệu phản hồi từ VNPay");
+      setTimeout(() => {
+        window.location.href = "/cart";
+      }, 1500);
+      return;
+    }
+
     const orderData = JSON.parse(localStorage.getItem("pending_order"));
     if (!orderData) {
-      toast.error("Khong tim thay du lieu don hang dang cho thanh toan");
+      toast.error("Không tìm thấy dữ liệu đơn hàng đang chờ thanh toán");
       setTimeout(() => {
         window.location.href = "/cart";
       }, 1500);
@@ -57,7 +65,7 @@ export default function VnpayReturn() {
 
     
         setTimeout(() => {
-          window.location.href = "/cart";
+          window.location.href = "/donhang";
         }, 1500);
       })
       .catch(() => {

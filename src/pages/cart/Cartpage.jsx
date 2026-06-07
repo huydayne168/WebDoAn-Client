@@ -343,7 +343,8 @@ export default function Cartpage() {
                 //Tạo link thanh toán VNPay
                 axios.post('/api/create_payment_url', {
                     amount: finalTotal,
-                    language: "vn"
+                    language: "vn",
+                    returnUrl: `${window.location.origin}/vnpay-return`
                 })
                 .then(res => {
                     const paymentUrl = res.data.url;
