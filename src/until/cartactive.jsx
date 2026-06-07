@@ -3,7 +3,7 @@ import  { useEffect } from "react";
 const $ = window.$;
 const EMPTY_VOUCHER = {
   coupon_name: "novoucher",
-  discount_type: "amount",
+  discount_type: "money",
   discount_amount: 0,
   value: 0,
 };

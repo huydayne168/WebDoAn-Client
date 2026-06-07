@@ -7,7 +7,7 @@ import "./Cartpage.css";
 
 const EMPTY_VOUCHER = {
     coupon_name: "novoucher",
-    discount_type: "amount",
+    discount_type: "money",
     discount_amount: 0,
     value: 0,
 };
@@ -343,8 +343,7 @@ export default function Cartpage() {
                 //Tạo link thanh toán VNPay
                 axios.post('/api/create_payment_url', {
                     amount: finalTotal,
-                    language: "vn",
-                    returnUrl: `${window.location.origin}/vnpay-return`
+                    language: "vn"
                 })
                 .then(res => {
                     const paymentUrl = res.data.url;
